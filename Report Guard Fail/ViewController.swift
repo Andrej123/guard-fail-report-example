@@ -10,16 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let optionalInt: Int? = 5
+    let optionalString: String? = ""
+    let optionalBool: Bool? = nil
+    let testBool: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        guard let _ = optionalInt ??? reportFail(),
+            let _ = optionalString ??? reportFail(),
+            let _ = optionalBool ??? reportFail(),
+            testBool ??? reportFail()
+            else {
+                print("Fail")
+                return
+        }
+        print("Success")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
